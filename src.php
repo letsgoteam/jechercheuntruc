@@ -1,0 +1,1 @@
+<h2>Résultats de votre recherche :</h2>

@@ -5,12 +5,20 @@
         <title>Let's go !</title>
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+        <link href="papaOurs.css" rel="stylesheet">
     </head>
     <body>
 
-        <h1>Bienvenue sur la page de la nuit de l'info de la team let's go !</h1>
+        <h1>La cave de Papa Ours</h1>
+        <?php
+        if (isset($_GET['src'])) {
+            include "src.php";
+        } else {
+            include "accueil.php";
+        }
+        ?>
 
-        <h2> C'est trop cool elle est vide ! </h2>
+
 
         <script src="bootstrap/js/jquery.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
