@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Jeu 05 Décembre 2013 à 21:51
+-- Généré le : Jeu 05 Décembre 2013 à 22:00
 -- Version du serveur: 5.5.34
 -- Version de PHP: 5.3.10-1ubuntu3.8
 
@@ -61,11 +61,11 @@ CREATE TABLE IF NOT EXISTS `reponse` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `question` int(11) NOT NULL,
   `auteur` int(11) NOT NULL,
-  `contenu` varchar(255) NOT NULL,
+  `contenu` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `question` (`question`),
   KEY `auteur` (`auteur`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `count` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag` (`tag`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 -- --------------------------------------------------------
 
@@ -117,8 +117,8 @@ ALTER TABLE `question`
 -- Contraintes pour la table `reponse`
 --
 ALTER TABLE `reponse`
-  ADD CONSTRAINT `reponse_ibfk_2` FOREIGN KEY (`auteur`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reponse_ibfk_1` FOREIGN KEY (`question`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `reponse_ibfk_1` FOREIGN KEY (`question`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reponse_ibfk_2` FOREIGN KEY (`auteur`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
