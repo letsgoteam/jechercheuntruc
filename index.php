@@ -1,3 +1,34 @@
+<?php
+session_start();
+$dbh = new PDO('mysql:host=localhost;dbname=letsgo', 'letsgo', 'nuitinfo');
+
+$connect = FALSE;
+$failconnect = FALSE;
+if (isset($_GET['page']) && $_GET['page'] == 'logout') {
+    $_SESSION = array();
+    session_destroy();
+    session_start();
+} else {
+    if (isset($_SESSION['id']))
+        $connect = TRUE;
+
+    if (isset($_POST['username'])) {
+
+        $sql = 'SELECT * FROM utilisateur WHERE username = ?';
+        $sth = $dbh->prepare($sql);
+        $sth->execute(array($_POST['username']));
+        $resultat = $sth->fetch();
+        $passHash = crypt($_POST['password'], $resultat['password']);
+        if ($passHash == $resultat['password']) {
+            $connect = TRUE;
+            $_SESSION['id'] = $resultat['id'];
+        } else {
+            $failconnect = TRUE;
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +44,11 @@
         <div class="container col-lg-12">
             <h1>Je cherche un truc...</h1>
             <?php
+            if ($connect) {
+                echo "Bonjour monsieur id numero " . $_SESSION['id'] . "<br /><a href='index.php?page=logout'>Déconnexion</a>";
+            } else {
+                include "login.php";
+            }
             $page = array(
                 "login" => "login.php",
                 "newThread" => "newThread.php",
