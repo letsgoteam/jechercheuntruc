@@ -12,7 +12,7 @@ if (isset($_GET['page']) && $_GET['page'] == 'logout') {
     if (isset($_SESSION['id']))
         $connect = TRUE;
 
-    if (isset($_POST['username'])) {
+    if (isset($_POST['username']) && isset($_POST['password'])) {
 
         $sql = 'SELECT * FROM utilisateur WHERE username = ?';
         $sth = $dbh->prepare($sql);
@@ -37,7 +37,7 @@ if (isset($_GET['page']) && $_GET['page'] == 'logout') {
         <meta name="robots" content="all"/>
         <title>Je cherche un truc...</title>
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+        <!--<link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">-->
         <link href="papaOurs.css" rel="stylesheet">
     </head>
     <body>
@@ -53,6 +53,7 @@ if (isset($_GET['page']) && $_GET['page'] == 'logout') {
                 "login" => "login.php",
                 "newThread" => "newThread.php",
                 "reply" => "reply.php",
+                "register" => "register.php",
                 "thread" => "thread.php"
             );
             if (isset($_GET['page'])) {
