@@ -1,8 +1,15 @@
-<h2>Qu'est ce que Papa Ours va vous trouver aujourd'hui ?</h2>
 
-<form action="index.php" method="get" name="srcForm">
-    <input type="text" name="src" id="src" class="" />
-    <input type="submit" value="Rechercher !" />
-
-
-</form>
+<div class="col-xs-12">
+    <h4>Ces utilisateurs ont besoin de votre aide !</h4>
+    <?php
+    foreach ($dbh->query("SELECT *FROM question ORDER BY id DESC LIMIT 10") as $question):
+        echo '<div class="col-xs-12 result"><span class="glyphicon glyphicon-chevron-right"></span> <strong>' . $question['titre'] . '</strong><br />';
+        echo '<p>' . nl2br($question['contenu']) . '</p>';
+        echo '<span class="glyphicon glyphicon-flag"></span> <strong>Tags :</strong> ';
+        foreach ($dbh->query("SELECT *FROM asso_question_tag, tag WHERE question = " . $question['id'] . " AND asso_question_tag.tag = tag.id") as $asso):
+            echo $asso['tag'] . " ";
+        endforeach;
+        echo '</div>';
+    endforeach;
+    ?>
+</div>

@@ -5,19 +5,28 @@ if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['tags']))
     $sth->execute(array($_POST['title'], $_POST['content'], $_SESSION['id']));
     echo "<div class='alert alert-success'>Question ajoutée :)</div>";
 
+    $sth = $dbh->prepare('SELECT *FROM question WHERE titre=? AND contenu=? AND auteur=?');
+    $sth->execute(array($_POST['title'], $_POST['content'], $_SESSION['id']));
+    $array = $sth->fetch();
+    $question_id = $array['id'];
 
     foreach ($donnee as $value) {
-        $sth = $dbh->prepare('SELECT tag FROM tag WHERE tag=?');
+        $sth = $dbh->prepare('SELECT *FROM tag WHERE tag=?');
         $sth->execute(array($value));
-        $array = $sth->fetchAll();
+        $array = $sth->fetch();
         if (empty($array)) {
             $sth = $dbh->prepare('INSERT INTO tag (tag,count) VALUES (?,1)');
             $sth->execute(array($value));
+            $sth = $dbh->prepare('SELECT *FROM tag WHERE tag=?');
+            $sth->execute(array($value));
+            $array = $sth->fetch();
         } else {
-
             $sth = $dbh->prepare('UPDATE tag SET count=(count+1) WHERE tag=?');
             $sth->execute(array($value));
         }
+        $tag_id = $array['id'];
+        $sth = $dbh->prepare('INSERT INTO asso_question_tag (question,tag) VALUES (?,?)');
+        $sth->execute(array($question_id, $tag_id));
     }
 }
 ?>
