@@ -1,9 +1,12 @@
-README.txt
-Welcome to Let's Go Team git repositor
+##################################################
+#       Je cherche un truc Website Source Code
+#               This program is under
+#              GNU General Public License
+#
+##################################################
 
-Je suis tout seul :(
-Welcome to Let's Go Team git repository
+Website "Je cherche un truc" Version 1.0
 
-
-Bonjour de korlan
-test grégoire OMGwtf
+Je cherche un truc is a community website which aims to
+help people who are looking for something to find it on
+usual merchand website.
