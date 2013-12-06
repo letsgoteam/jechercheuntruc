@@ -1,6 +1,6 @@
 <?php
 session_start();
-$dbh = new PDO('mysql:host=localhost;dbname=letsgo', 'root', 'nuitinfo');
+$dbh = new PDO('mysql:host=localhost;dbname=letsgo', 'letsgo', 'hk4J99Wk');
 
 $connect = FALSE;
 $failconnect = FALSE;
