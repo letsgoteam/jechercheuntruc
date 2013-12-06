@@ -132,6 +132,7 @@ if(isset($_GET['page']) && $_GET['page'] == "reply" && !isset($_GET['tid'])) {
                     "newThread" => "newThread.php",
                     "reply" => "reply.php",
                     "register" => "register.php",
+                    "team" => "team.php",
                     "thread" => "thread.php"
                 );
                 if (isset($_GET['page'])) {
