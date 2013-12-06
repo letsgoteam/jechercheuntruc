@@ -1,3 +1,32 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tag-it! test Olol</title>
+  
+<link href="bootstrap/css/jquery.tagit.css" rel="stylesheet" type="text/css">
+<link href="bootstrap/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script src="bootstrap/js/tag-it.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+
+$(function(){
+
+        
+
+                $('#threadTags').tagit();
+                });
+</script>
+
+
+
+
+
+
 <?php
 if (isset($_POST['title'])) {
     $titre = htmlentities($_POST['title']);
@@ -8,7 +37,7 @@ if (isset($_POST['title'])) {
 ?>
 
 <h2>Vous cherchez quoi ?</h2>
-<form action="index.php?page=newThread" method="post" >
+<form action="traitement.php" method="post" >
     <div class="form-group">
         <label for="threadTitle">Titre</label>
         <input type="text" class="form-control" id="threadTitle" placeholder="Titre de la question" name="title"/>
