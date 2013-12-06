@@ -1,43 +1,29 @@
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Je cherche un truc...</title>
-  
-<link href="bootstrap/css/jquery.tagit.css" rel="stylesheet" type="text/css">
-<link href="bootstrap/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-
-
-<script src="bootstrap/js/tag-it.js" type="text/javascript" charset="utf-8"></script>
-
-<script>
-
-$(function(){
-
-        
-
-                $('#threadTags').tagit();
-                });
-</script>
-
-
-
-
-
-
 <?php
-if (isset($_POST['title'])) {
-    $titre = htmlentities($_POST['title']);
-    $content = htmlentities($_POST['content']);
-    $tags = htmlentities($_POST['tags']);
-    echo "Formulaire envoyé !<br />$titre<br />$content<br />$tags";
+if (isset($_POST['title']) && isset($_POST['content']) && isset($_POST['tags'])) {
+    $donnee = explode(",", $_POST['tags']);
+    $sth = $dbh->prepare('INSERT INTO question (titre,contenu,auteur) VALUES (?,?,?)');
+    $sth->execute(array($_POST['title'], $_POST['content'], $_SESSION['id']));
+    echo "<div class='alert alert-success'>Question ajoutée :)</div>";
+
+
+    foreach ($donnee as $value) {
+        $sth = $dbh->prepare('SELECT tag FROM tag WHERE tag=?');
+        $sth->execute(array($value));
+        $array = $sth->fetchAll();
+        if (empty($array)) {
+            $sth = $dbh->prepare('INSERT INTO tag (tag,count) VALUES (?,1)');
+            $sth->execute(array($value));
+        } else {
+
+            $sth = $dbh->prepare('UPDATE tag SET count=(count+1) WHERE tag=?');
+            $sth->execute(array($value));
+        }
+    }
 }
 ?>
 
 <h2>Vous cherchez quoi ?</h2>
-<form action="traitement.php" method="post" >
+<form action="index.php?page=newThread" method="post" >
     <div class="form-group">
         <label for="threadTitle">Titre</label>
         <input type="text" class="form-control" id="threadTitle" placeholder="Titre de la question" name="title"/>
