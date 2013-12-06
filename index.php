@@ -1,6 +1,6 @@
 <?php
 session_start();
-$dbh = new PDO('mysql:host=localhost;dbname=letsgo', 'root', 'nuitinfo');
+$dbh = new PDO('mysql:host=localhost;dbname=letsgo', 'letsgo', 'hk4J99Wk');
 
 $connect = FALSE;
 $failconnect = FALSE;
@@ -45,7 +45,11 @@ if (isset($_GET['page']) && $_GET['page'] == 'logout') {
             <h1>Je cherche un truc...</h1>
             <?php
             if ($connect) {
-                echo "Bonjour monsieur id numero " . $_SESSION['id'] . "<br /><a href='index.php?page=logout'>Déconnexion</a>";
+        	$sql = 'SELECT username FROM utilisateur WHERE id = ?';
+		$sth = $dbh->prepare($sql);
+		$sth->execute(array($_SESSION['id']));
+		$resultat = $sth->fetch();
+                echo "Bonjour  " . $resultat['username']  . "<br /><a href='index.php?page=logout'>Déconnexion</a>";
             } else {
                 include "login.php";
             }
