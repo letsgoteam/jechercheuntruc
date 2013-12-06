@@ -1,6 +1,6 @@
 <?php
 session_start();
-$dbh = new PDO('mysql:host=localhost;dbname=letsgo', 'letsgo', 'hk4J99Wk');
+$dbh = new PDO('mysql:host=localhost;dbname=letsgo', 'letsgo', 'nuitinfo');
 
 $connect = FALSE;
 $failconnect = FALSE;
@@ -37,7 +37,8 @@ if (isset($_GET['page']) && $_GET['page'] == 'logout') {
         <meta name="robots" content="all"/>
         <title>Je cherche un truc...</title>
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-        <!--<link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">-->
+        <link href="bootstrap/css/jquery.tagit.css" rel="stylesheet" type="text/css">
+        <link href="bootstrap/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
         <link href="papaOurs.css" rel="stylesheet">
     </head>
     <body>
@@ -45,11 +46,11 @@ if (isset($_GET['page']) && $_GET['page'] == 'logout') {
             <h1>Je cherche un truc...</h1>
             <?php
             if ($connect) {
-        	$sql = 'SELECT username FROM utilisateur WHERE id = ?';
-		$sth = $dbh->prepare($sql);
-		$sth->execute(array($_SESSION['id']));
-		$resultat = $sth->fetch();
-                echo "Bonjour  " . $resultat['username']  . "<br /><a href='index.php?page=logout'>Déconnexion</a>";
+                $sql = 'SELECT username FROM utilisateur WHERE id = ?';
+                $sth = $dbh->prepare($sql);
+                $sth->execute(array($_SESSION['id']));
+                $resultat = $sth->fetch();
+                echo "Bonjour  " . $resultat['username'] . "<br /><a href='index.php?page=logout'>Déconnexion</a>";
             } else {
                 include "login.php";
             }
@@ -76,6 +77,14 @@ if (isset($_GET['page']) && $_GET['page'] == 'logout') {
 
 
         <script src="bootstrap/js/jquery.js"></script>
+        <script src="bootstrap/js/jquery-ui.js"></script>
         <script src="bootstrap/js/bootstrap.js"></script>
+        <script src="bootstrap/js/tag-it.js"></script>
+
+        <script>
+            $(function() {
+                $('#threadTags').tagit();
+            });
+        </script>
     </body>
 </html>
