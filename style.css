@@ -1,0 +1,73 @@
+html, body{
+    height: 100%;
+}
+
+body {
+    padding-top: 20px;
+    background-color: #f5f5f5;
+}
+
+h1.text-center a {
+    color: #333;
+    text-decoration: none;
+}
+
+.navbar {
+    margin-bottom: 20px;
+    padding-right: 15px;
+}
+
+div.container {
+    margin-top: 30px;
+}
+
+div.dropdown-menu {
+    background-color: #080808;
+    padding: 10px;
+    color: #999;
+}
+
+div.result {
+    border-top: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+#footer {
+    background-color: #222;
+    color: #999;
+}
+
+#footer ul {
+    padding: 0px;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+#footer li {
+    list-style: none;
+    text-indent: 0px !important;
+}
+
+#footer ul a {
+    color: #999;
+}
+
+#footer ul a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -115px;
+}
+
+#footer > .container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin : 0;
+}
