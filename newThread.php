@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Tag-it! test Olol</title>
+<title>Je cherche un truc...</title>
   
 <link href="bootstrap/css/jquery.tagit.css" rel="stylesheet" type="text/css">
 <link href="bootstrap/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
