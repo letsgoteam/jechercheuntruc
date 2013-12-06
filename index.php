@@ -128,6 +128,7 @@ if (isset($_GET['page']) && $_GET['page'] == 'logout') {
                     "newThread" => "newThread.php",
                     "reply" => "reply.php",
                     "register" => "register.php",
+                    "team" => "team.php",
                     "thread" => "thread.php"
                 );
                 if (isset($_GET['page'])) {

@@ -34,6 +34,7 @@ div.result {
 }
 
 #footer {
+    margin-top: 50px;
     background-color: #222;
     color: #999;
 }
@@ -56,18 +57,4 @@ div.result {
 #footer ul a:hover {
     color: #fff;
     text-decoration: none;
-}
-
-/* Wrapper for page content to push down footer */
-#wrap {
-    min-height: 100%;
-    height: auto;
-    /* Negative indent footer by its height */
-    margin: 0 auto -115px;
-}
-
-#footer > .container {
-    padding-left: 15px;
-    padding-right: 15px;
-    margin : 0;
 }
