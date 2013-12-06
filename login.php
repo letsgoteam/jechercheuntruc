@@ -8,5 +8,6 @@
             <input name="password" type="password" id="password">
             <input type="submit" name="Submit" value="Login">
         </form>
+        <a href="index.php?page=register">S'enregistrer</a>
     </div>
 </div>
