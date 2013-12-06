@@ -85,7 +85,7 @@ if(isset($_GET['page']) && $_GET['page'] == "reply" && !isset($_GET['tid'])) {
                             <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Ils ont besoin de vous</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-pushpin"></span> Mes sujets</a></li>
                             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Mon profil</a></li>
-                            <li><a href="index.php?page=logout"><span class="glyphicon glyphicon-off"></span> D&eacuteconnexion</a></li>
+                            <li><a href="index.php?page=logout"><span class="glyphicon glyphicon-off"></span> D&eacute;connexion</a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -101,7 +101,7 @@ if(isset($_GET['page']) && $_GET['page'] == "reply" && !isset($_GET['tid'])) {
                             <?php
                             if (!$connect) {
                                 echo '
-                            <div class="col-xs-4 col-xs-offset-4">Vous devez &ecirctre connect&eacute pour poser une question</div>';
+                            <div class="col-xs-4 col-xs-offset-4">Vous devez &ecirc;tre connect&eacute; pour poser une question</div>';
                             } else {
                                 echo '
                             <div class="col-xs-2 col-xs-offset-5"><a class="btn btn-default" href="index.php?page=newThread">
@@ -152,10 +152,11 @@ if(isset($_GET['page']) && $_GET['page'] == "reply" && !isset($_GET['tid'])) {
             <div class="">
                 <ul>
                     <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
-                    <li><a href="index.php?page=team"><span class="glyphicon glyphicon-book"></span> À propos de nous</a></li>
+                    <li><a href="index.php?page=team"><span class="glyphicon glyphicon-book"></span> &Agrave; propos de nous</a></li>
                 </ul>
                 <p class="text-center">
-                    Site créé par la Let's go team pour la <a href="http://www.nuitdelinfo.com">Nuit de l'Info</a>. Code disponible sous licence <a href="http://www.gnu.org/">GNU</a>.
+                    Site cr&eacute;&eacute; par la Let's go team pour la <a href="http://www.nuitdelinfo.com">Nuit de l'Info</a>. Code disponible sous licence <a href="http://www.gnu.org/">GNU</a>.
+		    Code disponible sur <a href="https://github.com/letsgoteam/jechercheuntruc">Github</a>.
                 </p>
             </div>
         </div>
