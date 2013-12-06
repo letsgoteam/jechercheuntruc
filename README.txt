@@ -5,8 +5,7 @@
 #
 ##################################################
 
- 
-Website Je cherche un truc Version 1.0
+Website "Je cherche un truc" Version 1.0
 
 Je cherche un truc is a community website which aims to
 help people who are looking for something to find it on
